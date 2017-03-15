@@ -1,0 +1,12 @@
+<%= simple_form_for(@picture) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :estate_id %>
+    <%= f.input :url %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>

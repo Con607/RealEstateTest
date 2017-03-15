@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  estate_id: MyString
+  origin_company: MyString
+  title: MyString
+  property_type: MyString
+  agency: MyString
+  price: 1.5
+  currency: MyString
+  unit: MyString
+  floor_area: 1
+  rooms: 1
+  bathrooms: 1
+  city: MyString
+  city_area: MyString
+  region: MyString
+  longitude: 1.5
+  latitude: 1.5
+  picture_ids: 1
+  date: 2017-03-14
+  time: 2017-03-14 20:44:58
+  published: false
+
+two:
+  estate_id: MyString
+  origin_company: MyString
+  title: MyString
+  property_type: MyString
+  agency: MyString
+  price: 1.5
+  currency: MyString
+  unit: MyString
+  floor_area: 1
+  rooms: 1
+  bathrooms: 1
+  city: MyString
+  city_area: MyString
+  region: MyString
+  longitude: 1.5
+  latitude: 1.5
+  picture_ids: 1
+  date: 2017-03-14
+  time: 2017-03-14 20:44:58
+  published: false

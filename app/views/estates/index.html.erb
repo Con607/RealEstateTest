@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Estates</h1>
+
+<table class="table table-hover table-responsive table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Estate</th>
+      <th>Origin company</th>
+      <th>Title</th>
+      <th>Property type</th>
+      <th>Agency</th>
+      <th>Price</th>
+      <th>Currency</th>
+      <th>Unit</th>
+      <th>Floor area</th>
+      <th>Rooms</th>
+      <th>Bathrooms</th>
+      <th>City</th>
+      <th>City area</th>
+      <th>Region</th>
+      <th>Longitude</th>
+      <th>Latitude</th>
+      <th>Picture ids</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Published</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @estates.each do |estate| %>
+      <tr>
+        <td><%= estate.estate_id %></td>
+        <td><%= estate.origin_company %></td>
+        <td><%= estate.title %></td>
+        <td><%= estate.property_type %></td>
+        <td><%= estate.agency %></td>
+        <td><%= estate.price %></td>
+        <td><%= estate.currency %></td>
+        <td><%= estate.unit %></td>
+        <td><%= estate.floor_area %></td>
+        <td><%= estate.rooms %></td>
+        <td><%= estate.bathrooms %></td>
+        <td><%= estate.city %></td>
+        <td><%= estate.city_area %></td>
+        <td><%= estate.region %></td>
+        <td><%= estate.longitude %></td>
+        <td><%= estate.latitude %></td>
+        <td><%= estate.picture_ids %></td>
+        <td><%= estate.date %></td>
+        <td><%= estate.time %></td>
+        <td><%= estate.published %></td>
+        <td><%= link_to 'Show', estate %></td>
+        <td><%= link_to 'Edit', edit_estate_path(estate) %></td>
+        <td><%= link_to 'Destroy', estate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Estate', new_estate_path %>
