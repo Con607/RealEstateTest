@@ -5,6 +5,7 @@
     <%= f.input :estate_id %>
     <%= f.input :origin_company %>
     <%= f.input :title %>
+    <%= f.input :description %>
     <%= f.input :property_type %>
     <%= f.input :agency %>
     <%= f.input :price %>
@@ -18,7 +19,7 @@
     <%= f.input :region %>
     <%= f.input :longitude %>
     <%= f.input :latitude %>
-    <%= f.input :picture_ids %>
+    <%= f.association :pictures %>
     <%= f.input :date %>
     <%= f.input :time %>
     <%= f.input :published %>
