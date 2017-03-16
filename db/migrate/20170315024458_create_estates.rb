@@ -20,7 +20,7 @@ class CreateEstates < ActiveRecord::Migration[5.0]
       t.integer :picture_ids
       t.date :date
       t.time :time
-      t.boolean :published
+      t.boolean :published, :default => false
 
       t.timestamps
     end

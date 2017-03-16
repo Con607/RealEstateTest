@@ -2,7 +2,7 @@ class PagesController < ApplicationController
 	layout 'pages'
 
   def home
-  	@estates = Estate.first(9)
+  	@estates = Estate.published.first(12)
   end
 
 end

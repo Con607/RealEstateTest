@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170315052942) do
+ActiveRecord::Schema.define(version: 20170315215002) do
 
   create_table "estates", force: :cascade do |t|
     t.string   "estate_id"
@@ -32,10 +32,12 @@ ActiveRecord::Schema.define(version: 20170315052942) do
     t.integer  "picture_ids"
     t.date     "date"
     t.time     "time"
-    t.boolean  "published"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.boolean  "published",      default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "description"
+    t.string   "status"
+    t.string   "url"
     t.index ["estate_id"], name: "index_estates_on_estate_id", unique: true
   end
 
