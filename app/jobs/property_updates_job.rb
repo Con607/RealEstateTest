@@ -49,7 +49,7 @@ class PropertyUpdatesJob < ApplicationJob
       # Save the values in a hash for easy access
       properties = {
         title: children.css('title').inner_text,
-        estate_id: children.css('id').inner_text,
+        property_id: children.css('id').inner_text,
         description: children.css('content').inner_text,
         origin_company: @imported_from,
         property_type: children.css('type').inner_text,
@@ -73,7 +73,7 @@ class PropertyUpdatesJob < ApplicationJob
       }
 
       # Try to get the property from the database
-      estate = Estate.where(estate_id: properties[:estate_id]).first
+      estate = Estate.by_property_id(properties[:property_id]).first
 
       if estate.nil?  # If not found create record
         create_estate(properties, children.css('picture'))
@@ -94,7 +94,6 @@ class PropertyUpdatesJob < ApplicationJob
     # Create pictures
     pictures.each do |picture|
       picture = Picture.create(estate: estate, url: picture.css('picture_url').inner_text)
-      #estate.pictures << picture
     end
     @created += 1
   end
@@ -103,18 +102,18 @@ class PropertyUpdatesJob < ApplicationJob
   def update_estate(estate, properties, pictures)
     estate.update(properties)
 
-    # Remove old pictures
+    # Remove old pictures since they are links only
     estate.pictures.destroy_all
 
     # Create pictures
     pictures.each do |picture|
       picture = Picture.create(estate: estate, url: picture.css('picture_url').inner_text)
-      #estate.pictures << picture
     end
     @updated += 1
   end
 
 
+  # Sometimes unit value comes nil and breaks the code, we check that here
   def get_unit_value(children)
     # Check for nil value in floor_area node
     unit = ""
@@ -125,6 +124,7 @@ class PropertyUpdatesJob < ApplicationJob
   end
 
 
+  # Sometimes currency value comes nil and breaks the code, we check that here
   def get_currency_value(children)
     # Check for nil value in price node
     currency = 0
@@ -135,14 +135,15 @@ class PropertyUpdatesJob < ApplicationJob
   end
 
 
+  # Loop through the published properties and unpublish the deleted properties
   def check_unpublished(imported_ids)
-    estates = Estate.published.by_company(@imported_from)
+    published_estates = Estate.published.by_company(@imported_from)
 
     found = false
-    estates.each do |published_estate|
+    published_estates.each do |published_estate|
       # Search for the record and break if found
       imported_ids.each do |imported_id|
-        if published_estate.estate_id == imported_id.inner_text
+        if published_estate.property_id == imported_id.inner_text
           found = true
           break
         end
@@ -150,7 +151,7 @@ class PropertyUpdatesJob < ApplicationJob
 
       # If record was not found then unpublish it
       if !found
-        published_estate.updated(published: false)
+        published_estate.unpublish
       end
     end
   end

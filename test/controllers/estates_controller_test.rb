@@ -17,7 +17,7 @@ class EstatesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create estate" do
     assert_difference('Estate.count') do
-      post estates_url, params: { estate: { agency: @estate.agency, bathrooms: @estate.bathrooms, city: @estate.city, city_area: @estate.city_area, currency: @estate.currency, date: @estate.date, estate_id: @estate.estate_id, floor_area: @estate.floor_area, latitude: @estate.latitude, longitude: @estate.longitude, origin_company: @estate.origin_company, picture_ids: @estate.picture_ids, price: @estate.price, property_type: @estate.property_type, published: @estate.published, region: @estate.region, rooms: @estate.rooms, time: @estate.time, title: @estate.title, unit: @estate.unit } }
+      post estates_url, params: { estate: { agency: @estate.agency, bathrooms: @estate.bathrooms, city: @estate.city, city_area: @estate.city_area, currency: @estate.currency, date: @estate.date, property_id: @estate.property_id, floor_area: @estate.floor_area, latitude: @estate.latitude, longitude: @estate.longitude, origin_company: @estate.origin_company, picture_ids: @estate.picture_ids, price: @estate.price, property_type: @estate.property_type, published: @estate.published, region: @estate.region, rooms: @estate.rooms, time: @estate.time, title: @estate.title, unit: @estate.unit } }
     end
 
     assert_redirected_to estate_url(Estate.last)
@@ -34,7 +34,7 @@ class EstatesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update estate" do
-    patch estate_url(@estate), params: { estate: { agency: @estate.agency, bathrooms: @estate.bathrooms, city: @estate.city, city_area: @estate.city_area, currency: @estate.currency, date: @estate.date, estate_id: @estate.estate_id, floor_area: @estate.floor_area, latitude: @estate.latitude, longitude: @estate.longitude, origin_company: @estate.origin_company, picture_ids: @estate.picture_ids, price: @estate.price, property_type: @estate.property_type, published: @estate.published, region: @estate.region, rooms: @estate.rooms, time: @estate.time, title: @estate.title, unit: @estate.unit } }
+    patch estate_url(@estate), params: { estate: { agency: @estate.agency, bathrooms: @estate.bathrooms, city: @estate.city, city_area: @estate.city_area, currency: @estate.currency, date: @estate.date, property_id: @estate.property_id, floor_area: @estate.floor_area, latitude: @estate.latitude, longitude: @estate.longitude, origin_company: @estate.origin_company, picture_ids: @estate.picture_ids, price: @estate.price, property_type: @estate.property_type, published: @estate.published, region: @estate.region, rooms: @estate.rooms, time: @estate.time, title: @estate.title, unit: @estate.unit } }
     assert_redirected_to estate_url(@estate)
   end
 

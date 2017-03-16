@@ -1,7 +1,7 @@
 class CreateEstates < ActiveRecord::Migration[5.0]
   def change
     create_table :estates do |t|
-      t.string :estate_id
+      t.string :property_id
       t.string :origin_company
       t.string :title
       t.string :property_type
@@ -24,6 +24,5 @@ class CreateEstates < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :estates, :estate_id, :unique => true
   end
 end

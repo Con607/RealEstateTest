@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 20170315215002) do
 
   create_table "estates", force: :cascade do |t|
-    t.string   "estate_id"
+    t.string   "property_id"
     t.string   "origin_company"
     t.string   "title"
     t.string   "property_type"
@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20170315215002) do
     t.string   "description"
     t.string   "status"
     t.string   "url"
-    t.index ["estate_id"], name: "index_estates_on_estate_id", unique: true
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -46,7 +45,6 @@ ActiveRecord::Schema.define(version: 20170315215002) do
     t.string   "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["estate_id"], name: "index_pictures_on_estate_id"
   end
 
 end

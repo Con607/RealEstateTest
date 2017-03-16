@@ -4,7 +4,8 @@ class EstatesController < ApplicationController
   # GET /estates
   # GET /estates.json
   def index
-    @estates = Estate.all
+    #@estates = Estate.published.order(:title).page params[:page]
+    @estates = Estate.search(params[:search], 21).published.order(:title).page params[:page]
   end
 
   # GET /estates/1
@@ -69,6 +70,6 @@ class EstatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estate_params
-      params.require(:estate).permit(:estate_id, :origin_company, :title, :property_type, :agency, :price, :currency, :unit, :floor_area, :rooms, :bathrooms, :city, :city_area, :region, :longitude, :latitude, :picture_ids, :date, :time, :published)
+      params.require(:estate).permit(:property_id, :origin_company, :title, :property_type, :agency, :price, :currency, :unit, :floor_area, :rooms, :bathrooms, :city, :city_area, :region, :longitude, :latitude, :picture_ids, :date, :time, :published)
     end
 end

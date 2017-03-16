@@ -50,6 +50,9 @@ gem 'slim'
 gem 'nokogiri'
 #############################
 
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
+
 gem 'whenever', :require => false
 
 group :development, :test do

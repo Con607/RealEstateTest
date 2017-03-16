@@ -15,13 +15,18 @@ class PicturesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create picture" do
-    assert_difference('Picture.count') do
-      post pictures_url, params: { picture: { estate_id: @picture.estate_id, url: @picture.url } }
-    end
-
-    assert_redirected_to picture_url(Picture.last)
+  test "should not create picture with a estate association" do
+    picture = Picture.new
+    assert_not picture.save
   end
+
+  #test "should create picture" do
+  #  assert_difference('Picture.count') do
+  #    post pictures_url, params: { picture: { estate_id: @picture.estate_id, url: @picture.url } }
+  #  end
+#
+#  #  assert_redirected_to picture_url(Picture.last)
+  #end
 
   test "should show picture" do
     get picture_url(@picture)
@@ -34,8 +39,13 @@ class PicturesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update picture" do
-    patch picture_url(@picture), params: { picture: { estate_id: @picture.estate_id, url: @picture.url } }
+    patch picture_url(@picture), params: { picture: { url: @picture.url } }
     assert_redirected_to picture_url(@picture)
+  end
+
+  test "should not update estate_id" do
+    patch picture_url(@picture), params: { picture: { estate_id: @picture.estate_id, url: @picture.url } }
+    assert_response :error
   end
 
   test "should destroy picture" do

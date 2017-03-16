@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  estate_id: MyString
+  property_id: MyString
   origin_company: MyString
   title: MyString
   property_type: MyString
@@ -23,7 +23,7 @@ one:
   published: false
 
 two:
-  estate_id: MyString
+  property_id: MyString2
   origin_company: MyString
   title: MyString
   property_type: MyString

@@ -14,21 +14,62 @@
   <div class="container">
 
   	<div class="row">
+      <!-- Pagination top -->
+      <div class="col-12">
+        <%= paginate @estates, 
+            theme: 'twitter-bootstrap-4', 
+            pagination_class: "pagination justify-content-center" %>
+        <%= form_tag pages_home_path, :method => 'get' do %>
+          <p>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag "Search", :name => nil %>
+          </p>
+        <% end %>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+
+      <!-- List of properties -->
+      <div class="card-deck">
 	  	<% @estates.each do |estate| %>
-			<div class="col-6 col-md-4">
-				<div class="card">
+  				<div class="card" style="width: 20rem; margin-bottom: 2.5rem;">
 					  <% if estate.pictures.first != nil %>
 					  	<% if estate.pictures.first.url.present? %>
-					  		<%= image_tag(estate.pictures.first.url, alt: estate.title) %>
+					  		<%= image_tag(estate.pictures.first.url, alt: estate.title, style: "height: 20rem;") %>
+              <% else %>
+                <img data-src="holder.js/100px280" alt="Card image cap">
 					  	<% end %>
 					  <% else %>
 					  	<img data-src="holder.js/100px280" alt="Card image cap">
 					  <% end %>
-					  <p class="card-text"><%= estate.title %></p>
-            <p><%= estate.description %></p>
-				</div>
-			</div>
+            <div class="card-block">
+              <h4 class="card-title"><%= estate.title %></h4>
+              <p class="card-text"><%= estate.description.slice(0..200) + '...' %></p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><%= estate.status %></li>
+              <li class="list-group-item">Rooms: <%= estate.rooms %></li>
+              <li class="list-group-item">Bathrooms: <%= estate.bathrooms %></li>
+            </ul>
+            <div class="card-block">
+              <%= link_to 'Details', estate_path(estate), class: "card-link" %>
+              <%= link_to 'Map', '', class: "card-link" %>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Published on <%= estate.created_at.strftime("%B %d, %Y") %> </small>
+            </div>
+  				</div>
 	  	<% end %>
+      </div>
+
+      <!-- Pagination bottom -->
+      <div class="col-12">
+        <%= paginate @estates, 
+            theme: 'twitter-bootstrap-4', 
+            pagination_class: "pagination justify-content-center" %>
+      </div>
     </div>
 
   </div>
