@@ -55,6 +55,7 @@ Once the job is finished you will see the Processed number changes and then you 
 **** BUGS ****
 
 There are a few known asthetic bugs in the application.
+
 	- When a property has no image if you paginate through the properties listing the image mockup generated with holder.js wont render. It seems to be a turbolinks problem. It could be fixed implementing the download of the images and generate our own.
 	- When clicking on details to show a property it should display its images in a carousel, its not working right at the moment. Might also be better to show it in the same page instead of redirecting.
 	- Information shown in the details of a property needs formatting.
