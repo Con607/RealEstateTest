@@ -55,4 +55,10 @@ class PicturesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to pictures_url
   end
+
+  test "Invalid without estate" do
+    picture = Picture.new
+    assert !picture.valid?, "Estate is not being validated"
+  end
+
 end

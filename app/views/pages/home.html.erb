@@ -3,8 +3,7 @@
     <h1 class="jumbotron-heading">The Flat Real Estates</h1>
     <p class="lead text-muted">We have a property for you no matter where you are, where you live or where you go, you will find it here!</p>
     <p>
-      <a href="#" class="btn btn-primary">Main call to action</a>
-      <a href="#" class="btn btn-secondary">Secondary action</a>
+      <a href="#" class="btn btn-primary">Subscribe</a>
     </p>
   </div>
 </section>
@@ -14,21 +13,19 @@
   <div class="container">
 
   	<div class="row">
+        <div class="col-md-3 push-md-9">
+          <%= form_tag pages_home_path, :method => 'get', class: "form-inline my-2 my-lg-0" do %>
+            <p>
+              <%= text_field_tag :search, params[:search], placeholder: "Search", class: "form-control mr-sm-2" %>
+              <%= submit_tag "Search", :name => nil, class: "btn btn-outline-success my-2 my-sm-0" %>
+            </p>
+          <% end %>
+        </div>
       <!-- Pagination top -->
       <div class="col-12">
-        <%= paginate @estates, 
-            theme: 'twitter-bootstrap-4', 
-            pagination_class: "pagination justify-content-center" %>
-        <%= form_tag pages_home_path, :method => 'get' do %>
-          <p>
-            <%= text_field_tag :search, params[:search] %>
-            <%= submit_tag "Search", :name => nil %>
-          </p>
-        <% end %>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+          <%= paginate @estates, 
+              theme: 'twitter-bootstrap-4', 
+              pagination_class: "pagination justify-content-center" %>
       </div>
 
       <!-- List of properties -->

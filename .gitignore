@@ -20,3 +20,5 @@
 # Ignore Byebug command history file.
 .byebug_history
 /dump.rdb
+/lib/tasks/Easy Broker.xml
+/lib/tasks/Easy Broker.xml.gz

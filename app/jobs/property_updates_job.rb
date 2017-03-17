@@ -13,7 +13,7 @@ class PropertyUpdatesJob < ApplicationJob
     @saved_zip = "./lib/tasks/#{@imported_from}.xml.gz"
     @xml_file = "./lib/tasks/#{@imported_from}.xml"
 
-    puts "Easy Broker property updates started..."
+    puts "Property updates job started..."
 
     download_and_unzip
     create_or_update

@@ -45,4 +45,11 @@ class EstatesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to estates_url
   end
+
+  # IN prgoress
+  #test "can publish a estate" do
+  #  estate = estates(:one)
+  #  assert_equal estate.published == true, estate.publish
+  #end
+
 end

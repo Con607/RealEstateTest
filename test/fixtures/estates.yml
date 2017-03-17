@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   property_id: MyString
   origin_company: MyString
   title: MyString
@@ -23,6 +24,7 @@ one:
   published: false
 
 two:
+  id: 2
   property_id: MyString2
   origin_company: MyString
   title: MyString
