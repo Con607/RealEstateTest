@@ -17,14 +17,14 @@ It needs to be installed in a server/desktop with Linux OS.
 
 5. Then you can run the bundle command "bundle"
 
-6. The project uses sidekiq and redis to monitor the jobs on the background so we need to install it. We install it with the following commands:
+6. The project uses sidekiq and redis to monitor the jobs on the background so we need to install it. We install it with the following commands.
 	- Download the pacakge "wget http://download.redis.io/redis-stable.tar.gz"
 	- Unzip it "tar xvzf redis-stable.tar.gz"
 	- Get in the folder of the unziped file "cd redis-stable"
 	- Compile it "make"
 	- Install it "make install"
 	- Check if everything is alright "make test"
-The installation instructions are here: https://redis.io/topics/quickstart in case you run into any problems. 
+	- The installation instructions are here: https://redis.io/topics/quickstart in case you run into any problems. 
 
 7. Now we go back to our rails project folder and start the redis server with the following command "redis-server"
 
@@ -51,8 +51,11 @@ After you start the job you can view the sidekiq web interface, click on Busy, t
 Once the job is finished you will see the Processed number changes and then you can refresh the applications web page. The properties will be shown this time.
 
 
+
 **** BUGS ****
-There are a few known asthetic bugs in the application:
+
+There are a few known asthetic bugs in the application.
+
 	- When a property has no image if you paginate through the properties listing the image mockup generated with holder.js wont render. It seems to be a turbolinks problem. It could be fixed implementing the download of the images and generate our own.
 	- When clicking on details to show a property it should display its images in a carousel, its not working right at the moment. Might also be better to show it in the same page instead of redirecting.
 	- Information shown in the details of a property needs formatting.
@@ -60,7 +63,10 @@ There are a few known asthetic bugs in the application:
 	- Search only searches by title.
 
 
+
+
 **** TODO ****
+
 - Download the images so its easier to work with them like resizing.
 - Implement the Map link.
 - Make the search able to search for different options other than title.
